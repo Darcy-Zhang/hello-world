@@ -1,3 +1,6 @@
+/**************************************************************************************************
+ *Sorry Dashark, the program has some bugs which is hard to fix and it only works well after 1582.*
+ *************************************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
