@@ -13,7 +13,7 @@ int main(void)
 
    if (day <= 0 || day >= 32 || month <= 0 || month >= 13 || year <= 0)
    {
-      printf("The day does not exist!");
+      printf("The day does not exist!\n");
       exit(0);
    }
 
@@ -25,12 +25,12 @@ int main(void)
          {
             if (year % 4 != 0)
             {
-               printf("The day does not exist!");
+               printf("The day does not exist!\n");
                exit(0);
             }
             else if (year % 400 != 0 && year % 100 == 0)
             {
-               printf("The day does not exist!");
+               printf("The day does not exist!\n");
                exit(0);
             }
          }
@@ -39,7 +39,7 @@ int main(void)
       {
          if (month == 2)
          {
-            printf("The day does not exist!");
+            printf("The day does not exist!\n");
             exit(0);
          }
       }
@@ -47,7 +47,7 @@ int main(void)
       {
          if (month == 2 || month == 4 || month == 6 || month == 9 || month == 11)
          {
-            printf("The day does not exist!");
+            printf("The day does not exist!\n");
             exit(0);
          }
       }
@@ -59,7 +59,7 @@ int main(void)
       {
          if (day >= 5 && day <= 14)
          {
-            printf("The day does not exist!");
+            printf("The day does not exist!\n");
             exit(0);
          }
       }
@@ -109,7 +109,7 @@ int main(void)
    }
    else
    {
-      w = (year % 100) + ((year % 100) / 4) + ((year / 100) / 4) - 2 * (year / 100) + ((13 * (month + 1)) / 5) + day + 2;
+      w = (year % 100) + ((year % 100) / 4) + ((year / 100) / 4) - 2 * (year / 100) + ((13 * (month + 1)) / 5) + day + 1;
    }
 
    printf("Dated this %d", day);
@@ -133,8 +133,8 @@ int main(void)
 
    switch (month)
    {
-      case 13: printf("January"); break;
-      case 14: printf("February"); break;
+      case 13: printf("January"); year = year + 1; break;
+      case 14: printf("February"); year = year + 1; break;
       case 3: printf("March"); break;
       case 4: printf("April"); break;
       case 5: printf("May"); break;
@@ -145,6 +145,11 @@ int main(void)
       case 10: printf("October"); break;
       case 11: printf("November"); break;
       case 12: printf("December"); break;
+   }
+
+   if (year < 100)
+   {
+      w = w + 3;
    }
 
    printf(", on ");
