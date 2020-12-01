@@ -20,41 +20,41 @@ int main(void)
 	
 	printf("Please enter the license plate number and press Enter to end: ");
 		
-	for (; (temp = getchar()) != '\n';)
+	for (; (temp = getchar()) != '\n';)//循环读取屏幕上的字符，敲回车停止 
 	{
-		if (temp != ' ')
+		if (temp != ' ')//忽略空格 
 		{
-			a[i] = temp;
+			a[i] = temp;//把字符放到数组里 
 			i++;
 		}
 	}
 	
 	for (x = 0; x < i; x++)
 	{
-		if (a[x] < 128)
+		if (a[x] < 128)//通过判断字符编码是否小于128来判断中文和ASCII码 
 		{
-			if (97 <= a[x] && a[x] <= 122)
+			if (97 <= a[x] && a[x] <= 122)//顺手写的，目的是遇到小写字母就把它转化为大写 
 			{
 				a[x] = a[x] - 32;
 			}
 			
-			printf("%c", a[x]);
+			printf("%c", a[x]);//打印出来 
 		}
 		else
 		{
-			m = (int)a[x];
+			m = (int)a[x];//把编码转化为整形进行运算，因为我之前直接运算出问题了，所以多做了赋值这一步 
 			n = (int)a[x+1];
 			
 			for (y = 0; y < 38; y++)
 			{
-				if (((m * 256) + n) == GB[y])
+				if (((m * 256) + n) == GB[y])//如果两个字符的编码等于数组中的汉字编码（比较两个是因为汉字占两个字节） 
 				{
-					printf(" %x ", UTF[y]);
-					y = y + 38;
+					printf(" %x ", UTF[y]);//打印对应的字符 
+					y = y + 38;//跳出循环，事实上没什么意义 
 				}
 			}
 			
-			x++;
+			x++;//因为一个汉字等于两个字符，所以就一次跳过两个 
 		}
 	}
 			
